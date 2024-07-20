@@ -26,7 +26,6 @@ script = ExtResource("1_1j27n")
 [node name="Bucket" parent="." instance=ExtResource("1_bgarv")]
 process_mode = 1
 position = Vector2(640, 650)
-metadata/_edit_lock_ = true
 
 [node name="BombDropper" parent="." instance=ExtResource("3_8hpq8")]
 process_mode = 1
@@ -109,7 +108,7 @@ text = "Quit Game"
 
 [node name="ExitButton" type="Button" parent="PauseMenu/VBoxContainer"]
 layout_mode = 2
-text = "Exit"
+text = "Resume"
 
 [connection signal="pressed" from="PauseMenu/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="PauseMenu/VBoxContainer/FullScreenButton" to="." method="_on_full_screen_button_pressed"]
