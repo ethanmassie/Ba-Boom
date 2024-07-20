@@ -80,6 +80,7 @@ func reset_bomb(bomb: CharacterBody2D) -> void:
 func reset_all() -> void:
 	for bomb in bomb_pool:
 		reset_bomb(bomb)
+		bomb.catch_effect.stop()
 	
 func change_direction(scalar: int) -> void:
 	velocity.x = scalar * GameState.get_dropper_speed()

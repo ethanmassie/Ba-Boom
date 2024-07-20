@@ -13,7 +13,7 @@ config_version=5
 config/name="Ba-Boom"
 run/main_scene="res://Game/game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-config/icon="res://Assets/Sprites/bucket.png"
+config/icon="res://icon.svg"
 
 [autoload]
 
