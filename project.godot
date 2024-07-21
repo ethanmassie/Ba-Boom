@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+Config="*res://Global/config.gd"
 GameState="*res://Global/game_state.gd"
 Utils="*res://Global/utils.gd"
 ThemeManager="*res://Global/theme_manager.gd"

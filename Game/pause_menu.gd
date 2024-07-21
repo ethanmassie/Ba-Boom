@@ -1,5 +1,13 @@
 extends CanvasLayer
 
+@onready var theme_select = $VBoxContainer/ThemeSelect
+
+func _ready() -> void:
+	theme_select.selected = ThemeManager.selected_theme
+	var themes = ThemeManager.get_themes()
+	for i in len(themes):
+		theme_select.add_item(themes[i]["text"], i)
+
 func toggle() -> void:
 	visible = !visible
 	get_tree().paused = visible
