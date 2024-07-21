@@ -2,7 +2,7 @@ extends Node
 
 const MAX_HP = 3
 const MIN_LEVEL = 1
-const MAX_LEVEL = 20
+const MAX_LEVEL = 15
 const INITIAL_DROP_INTERVAL = 0.8
 const DROP_INTERVAL_STEP = 0.15
 const MIN_DROP_INTERVAL = 0.2
