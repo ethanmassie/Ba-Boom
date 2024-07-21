@@ -21,8 +21,8 @@ shape = SubResource("CircleShape2D_1jdky")
 metadata/_edit_lock_ = true
 
 [node name="TopBucket" type="Area2D" parent="."]
-metadata/IS_BUCKET = true
 metadata/_edit_lock_ = true
+metadata/IS_CATCHER = true
 
 [node name="Sprite" type="Sprite2D" parent="TopBucket"]
 position = Vector2(0, -30)
@@ -34,8 +34,8 @@ shape = SubResource("RectangleShape2D_aeeo2")
 
 [node name="MiddleBucket" type="Area2D" parent="."]
 position = Vector2(0, 36)
-metadata/IS_BUCKET = true
 metadata/_edit_lock_ = true
+metadata/IS_CATCHER = true
 
 [node name="Sprite" type="Sprite2D" parent="MiddleBucket"]
 position = Vector2(0, -30)
@@ -47,8 +47,8 @@ shape = SubResource("RectangleShape2D_aeeo2")
 
 [node name="BottomBucket" type="Area2D" parent="."]
 position = Vector2(0, 36)
-metadata/IS_BUCKET = true
 metadata/_edit_lock_ = true
+metadata/IS_CATCHER = false
 
 [node name="Sprite" type="Sprite2D" parent="BottomBucket"]
 position = Vector2(0, 6)

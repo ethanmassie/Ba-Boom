@@ -28,18 +28,11 @@ func reset() -> void:
 	level_started = false
 	game_over = false
 	set_score_label()
-	update_bucket_size()
-	show_bucket()
-	reset_bomb_dropper()
+	update_catcher_size()
+	reset_dropper()
 
-func hide_bucket() -> void:
-	get_node("/root/Game/Bucket").hide()
-	
-func show_bucket() -> void:
-	get_node("/root/Game/Bucket").show()
-
-func reset_bomb_dropper() -> void:
-	get_node('/root/Game/BombDropper').global_position.x = 640
+func reset_dropper() -> void:
+	get_node('/root/Game/Dropper').global_position.x = 640
 
 func increase_score() -> void:
 	update_score(level)
@@ -81,15 +74,11 @@ func update_level(delta: int) -> void:
 
 func update_hp(delta: int) -> void:
 	hp = min(hp + delta, MAX_HP)
-	
-	if hp <= 0:
-		game_over = true
-		hide_bucket()
-	else:
-		update_bucket_size()
+	game_over = hp <= 0
+	update_catcher_size()
 		
-func update_bucket_size() -> void:
-	get_node("/root/Game/Bucket").update_size(hp)
+func update_catcher_size() -> void:
+	get_node("/root/Game/Catcher").update_size(hp)
 
 func get_drop_interval() -> float:
 	return maxf(INITIAL_DROP_INTERVAL - (float(level - 1) * DROP_INTERVAL_STEP), MIN_DROP_INTERVAL)
