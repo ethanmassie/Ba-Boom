@@ -16,7 +16,7 @@ const ONE_UP_SCORE = 1000
 var hp = MAX_HP
 var level = MIN_LEVEL
 var score = 0
-var caught_bombs = 0
+var caught = 0
 var level_started = false
 var game_over = false
 
@@ -24,7 +24,7 @@ func reset() -> void:
 	hp = MAX_HP
 	level = MIN_LEVEL
 	score = 0
-	caught_bombs = 0
+	caught = 0
 	level_started = false
 	game_over = false
 	set_score_label()
@@ -51,20 +51,20 @@ func check_one_up(old_score: int) -> void:
 		update_hp(1)
 		get_node("/root/Game/OneUpSound").play()
 
-func bomb_caught() -> void:
+func on_catch() -> void:
 	increase_score()
-	caught_bombs += 1
+	caught += 1
 	
-	if caught_bombs >= get_drop_count():
+	if caught >= get_drop_count():
 		level_started = false
-		caught_bombs = 0
+		caught = 0
 		update_level(1)
 
-func bomb_dropped() -> void:
+func on_miss() -> void:
 	update_level(-1)
 	update_hp(-1)
 	level_started = false
-	caught_bombs = 0
+	caught = 0
 
 func update_level(delta: int) -> void:
 	level = min(

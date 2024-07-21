@@ -1,0 +1,103 @@
+[gd_scene load_steps=13 format=3 uid="uid://blgu3bqt0bf4a"]
+
+[ext_resource type="Script" path="res://Game/Themes/Retro/bomb.gd" id="1_s7gj0"]
+[ext_resource type="Texture2D" uid="uid://mx4rhbef0ols" path="res://Game/Themes/Retro/Assets/Sprites/bomb.png" id="2_fgpn2"]
+[ext_resource type="AudioStream" uid="uid://bficrmot3va46" path="res://Game/Themes/Retro/Assets/Sounds/miss-effect.wav" id="3_0eu3u"]
+[ext_resource type="AudioStream" uid="uid://b6rk7qur6tvj2" path="res://Game/Themes/Retro/Assets/Sounds/catch-effect.wav" id="4_ho633"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vi3vn"]
+atlas = ExtResource("2_fgpn2")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18hah"]
+atlas = ExtResource("2_fgpn2")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iqof"]
+atlas = ExtResource("2_fgpn2")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8gjvp"]
+atlas = ExtResource("2_fgpn2")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utlb2"]
+atlas = ExtResource("2_fgpn2")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vewrt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vi3vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18hah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0iqof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gjvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utlb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8gjvp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0iqof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18hah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vi3vn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_850mo"]
+size = Vector2(19, 17)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8dl0"]
+size = Vector2(32, 28)
+
+[node name="Bomb" type="CharacterBody2D"]
+top_level = true
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_s7gj0")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_vewrt")
+frame_progress = 0.280417
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 8.5)
+shape = SubResource("RectangleShape2D_850mo")
+metadata/_edit_lock_ = true
+
+[node name="Collider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2(0, 10)
+shape = SubResource("RectangleShape2D_k8dl0")
+
+[node name="MissEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0eu3u")
+volume_db = 1.0
+max_distance = 3000.0
+
+[node name="CatchEffect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ho633")
+volume_db = 1.0
+max_distance = 3000.0
+max_polyphony = 2
+
+[connection signal="area_entered" from="Collider" to="." method="_on_collider_area_entered"]
+[connection signal="body_entered" from="Collider" to="." method="_on_collider_body_entered"]

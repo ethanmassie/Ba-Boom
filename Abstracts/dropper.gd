@@ -22,12 +22,14 @@ func _ready() -> void:
 		pool.append(droppable)
 		add_child(droppable)
 
-func _process(_delta):
+func _process(_delta) -> void:
 	if left_ray_cast.is_colliding():
 		change_direction(1)
+		change_direction_timer.start()
 	
 	if right_ray_cast.is_colliding():
 		change_direction(-1)
+		change_direction_timer.start()	
 
 func _physics_process(delta) -> void:
 	if is_on():

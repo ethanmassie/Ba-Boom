@@ -1,0 +1,58 @@
+[gd_scene load_steps=5 format=3 uid="uid://0drbhprmdkd0"]
+
+[ext_resource type="Script" path="res://Game/Themes/Retro/bucket.gd" id="1_rdefd"]
+[ext_resource type="Texture2D" uid="uid://dn6k5rq0osk0y" path="res://Game/Themes/Retro/Assets/Sprites/bucket.png" id="2_37ndg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1jdky"]
+radius = 11.0454
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aeeo2"]
+size = Vector2(96, 24)
+
+[node name="Bucket" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_rdefd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -36)
+shape = SubResource("CircleShape2D_1jdky")
+metadata/_edit_lock_ = true
+
+[node name="TopBucket" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
+metadata/IS_CATCHER = true
+
+[node name="Sprite" type="Sprite2D" parent="TopBucket"]
+position = Vector2(0, -30)
+texture = ExtResource("2_37ndg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopBucket"]
+position = Vector2(0, -36)
+shape = SubResource("RectangleShape2D_aeeo2")
+
+[node name="MiddleBucket" type="Area2D" parent="."]
+position = Vector2(0, 36)
+metadata/_edit_lock_ = true
+metadata/IS_CATCHER = true
+
+[node name="Sprite" type="Sprite2D" parent="MiddleBucket"]
+position = Vector2(0, -30)
+texture = ExtResource("2_37ndg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MiddleBucket"]
+position = Vector2(0, -36)
+shape = SubResource("RectangleShape2D_aeeo2")
+
+[node name="BottomBucket" type="Area2D" parent="."]
+position = Vector2(0, 36)
+metadata/_edit_lock_ = true
+metadata/IS_CATCHER = false
+
+[node name="Sprite" type="Sprite2D" parent="BottomBucket"]
+position = Vector2(0, 6)
+texture = ExtResource("2_37ndg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomBucket"]
+shape = SubResource("RectangleShape2D_aeeo2")
