@@ -25,7 +25,8 @@ script = ExtResource("1_ua5qe")
 
 [node name="Catcher" parent="." instance=ExtResource("3_sytfx")]
 process_mode = 1
-position = Vector2(640, 650)
+position = Vector2(640, 627)
+metadata/_edit_lock_ = true
 
 [node name="Dropper" parent="." instance=ExtResource("4_liwfk")]
 process_mode = 1
