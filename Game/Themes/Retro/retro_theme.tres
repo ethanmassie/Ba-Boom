@@ -1,0 +1,47 @@
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dd1rpraofk3gf"]
+
+[ext_resource type="FontFile" uid="uid://bxm5xrqt5i2by" path="res://Game/Themes/Retro/Assets/Fonts/press-start-2p-font/PressStart2P-vaV7.ttf" id="1_lkvo4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3gj5n"]
+bg_color = Color(1, 0.466667, 0.223529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_en707"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.611765, 0.223529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gjxj"]
+bg_color = Color(1, 0.384314, 0.176471, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nqdp"]
+bg_color = Color(1, 0.466667, 0.223529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_67ksi"]
+bg_color = Color(1, 0.466667, 0.223529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0tcqc"]
+bg_color = Color(1, 0.611765, 0.223529, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_41f85"]
+bg_color = Color(1, 0.611765, 0.223529, 1)
+
+[resource]
+default_font = ExtResource("1_lkvo4")
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0.372549, 0.803922, 0.894118, 1)
+Button/colors/font_hover_pressed_color = Color(0.372549, 0.803922, 0.894118, 1)
+Button/colors/font_pressed_color = Color(0.372549, 0.803922, 0.894118, 1)
+Button/styles/hover = SubResource("StyleBoxFlat_3gj5n")
+Button/styles/normal = SubResource("StyleBoxFlat_en707")
+Button/styles/pressed = SubResource("StyleBoxFlat_6gjxj")
+CheckButton/styles/hover = SubResource("StyleBoxFlat_4nqdp")
+Fonts/fonts/large = ExtResource("1_lkvo4")
+Fonts/fonts/normal = ExtResource("1_lkvo4")
+PopupMenu/colors/font_color = Color(0, 0, 0, 1)
+PopupMenu/colors/font_hover_color = Color(0.372549, 0.803922, 0.894118, 1)
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_67ksi")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_0tcqc")
+PopupPanel/styles/panel = SubResource("StyleBoxFlat_41f85")

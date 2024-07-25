@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8rqqqc1b40i7"]
+[gd_scene load_steps=11 format=3 uid="uid://c8rqqqc1b40i7"]
 
 [ext_resource type="Script" path="res://Game/Themes/Retro/retro.gd" id="1_ua5qe"]
 [ext_resource type="PackedScene" uid="uid://cyjv56jol62eg" path="res://Game/world_borders.tscn" id="2_asxyo"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bnn1he6mcerqh" path="res://Game/Themes/Retro/bomb_dropper.tscn" id="4_liwfk"]
 [ext_resource type="Texture2D" uid="uid://b72mff1gc4ht0" path="res://Game/Themes/Retro/Assets/Tiles/tiles.png" id="5_5q5vw"]
 [ext_resource type="AudioStream" uid="uid://bb8cd7anfy1dp" path="res://Game/Themes/Retro/Assets/Sounds/one-up-effect.wav" id="6_e31mm"]
+[ext_resource type="Theme" uid="uid://dd1rpraofk3gf" path="res://Game/Themes/Retro/retro_theme.tres" id="7_2kde0"]
 [ext_resource type="PackedScene" uid="uid://dl08gjqom3b52" path="res://Game/pause_menu.tscn" id="7_nf3g5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hxkmu"]
@@ -50,12 +51,14 @@ metadata/_edit_lock_ = true
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="Score" type="Label" parent="HUD"]
+offset_left = 2.0
 offset_top = 1.0
-offset_right = 1280.0
+offset_right = 1282.0
 offset_bottom = 68.0
 size_flags_horizontal = 4
+theme = ExtResource("7_2kde0")
 theme_override_colors/font_color = Color(1, 0.87451, 0, 1)
-theme_override_font_sizes/font_size = 36
+theme_override_font_sizes/font_size = 32
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
