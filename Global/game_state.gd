@@ -2,7 +2,7 @@ extends Node
 
 const MAX_HP = 3
 const MIN_LEVEL = 1
-const MAX_LEVEL = 20
+const MAX_LEVEL = 15
 const INITIAL_DROP_INTERVAL = 0.8
 const DROP_INTERVAL_STEP = 0.15
 const MIN_DROP_INTERVAL = 0.2
@@ -16,7 +16,7 @@ const ONE_UP_SCORE = 1000
 var hp = MAX_HP
 var level = MIN_LEVEL
 var score = 0
-var caught_bombs = 0
+var caught = 0
 var level_started = false
 var game_over = false
 
@@ -24,22 +24,15 @@ func reset() -> void:
 	hp = MAX_HP
 	level = MIN_LEVEL
 	score = 0
-	caught_bombs = 0
+	caught = 0
 	level_started = false
 	game_over = false
 	set_score_label()
-	update_bucket_size()
-	show_bucket()
-	reset_bomb_dropper()
+	update_catcher_size()
+	reset_dropper()
 
-func hide_bucket() -> void:
-	get_node("/root/Game/Bucket").hide()
-	
-func show_bucket() -> void:
-	get_node("/root/Game/Bucket").show()
-
-func reset_bomb_dropper() -> void:
-	get_node('/root/Game/BombDropper').global_position.x = 640
+func reset_dropper() -> void:
+	get_node('/root/Game/Dropper').global_position.x = 640
 
 func increase_score() -> void:
 	update_score(level)
@@ -58,20 +51,20 @@ func check_one_up(old_score: int) -> void:
 		update_hp(1)
 		get_node("/root/Game/OneUpSound").play()
 
-func bomb_caught() -> void:
+func on_catch() -> void:
 	increase_score()
-	caught_bombs += 1
+	caught += 1
 	
-	if caught_bombs >= get_drop_count():
+	if caught >= get_drop_count():
 		level_started = false
-		caught_bombs = 0
+		caught = 0
 		update_level(1)
 
-func bomb_dropped() -> void:
+func on_miss() -> void:
 	update_level(-1)
 	update_hp(-1)
 	level_started = false
-	caught_bombs = 0
+	caught = 0
 
 func update_level(delta: int) -> void:
 	level = min(
@@ -81,15 +74,11 @@ func update_level(delta: int) -> void:
 
 func update_hp(delta: int) -> void:
 	hp = min(hp + delta, MAX_HP)
-	
-	if hp <= 0:
-		game_over = true
-		hide_bucket()
-	else:
-		update_bucket_size()
+	game_over = hp <= 0
+	update_catcher_size()
 		
-func update_bucket_size() -> void:
-	get_node("/root/Game/Bucket").update_size(hp)
+func update_catcher_size() -> void:
+	get_node("/root/Game/Catcher").update_size(hp)
 
 func get_drop_interval() -> float:
 	return maxf(INITIAL_DROP_INTERVAL - (float(level - 1) * DROP_INTERVAL_STEP), MIN_DROP_INTERVAL)

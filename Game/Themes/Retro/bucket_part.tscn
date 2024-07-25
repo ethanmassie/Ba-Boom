@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjtvd5nvtrb50"]
+
+[ext_resource type="Texture2D" uid="uid://dn6k5rq0osk0y" path="res://Game/Themes/Retro/Assets/Sprites/bucket.png" id="1_ax40v"]
+[ext_resource type="Script" path="res://Game/Themes/Retro/bucket_part.gd" id="1_ogon5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aeeo2"]
+size = Vector2(96, 24)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a8qv6"]
+lifetime_randomness = 0.2
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(38, 0, 1)
+direction = Vector3(0, 0, 0)
+radial_velocity_max = 100.0
+gravity = Vector3(0, -100, 0)
+radial_accel_min = 50.0
+radial_accel_max = 100.0
+
+[sub_resource type="Gradient" id="Gradient_dyysb"]
+offsets = PackedFloat32Array(0, 0.50519, 1)
+colors = PackedColorArray(0.372549, 0.803922, 0.894118, 1, 0.315054, 0.797254, 0.968716, 1, 0.504973, 0.765175, 0.969534, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0jkqn"]
+gradient = SubResource("Gradient_dyysb")
+width = 5
+height = 4
+
+[node name="BucketPart" type="Area2D"]
+position = Vector2(0, 1)
+script = ExtResource("1_ogon5")
+metadata/IS_CATCHER = true
+
+[node name="Sprite" type="Sprite2D" parent="."]
+position = Vector2(0, -1)
+texture = ExtResource("1_ax40v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_aeeo2")
+
+[node name="SplashParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, -17)
+emitting = false
+amount = 75
+process_material = SubResource("ParticleProcessMaterial_a8qv6")
+texture = SubResource("GradientTexture2D_0jkqn")
+lifetime = 0.4
+explosiveness = 0.25
+trail_lifetime = 0.1
+trail_sections = 20
+trail_section_subdivisions = 2
+
+[node name="SplashStopTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="SplashStopTimer" to="." method="_on_splash_stop_timer_timeout"]
