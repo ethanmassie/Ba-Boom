@@ -8,7 +8,7 @@ func _ready() -> void:
 	set_input_handler()
 	Config.change.connect(set_input_handler)
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	input_handler.call()
 
 func set_input_handler() -> void:
