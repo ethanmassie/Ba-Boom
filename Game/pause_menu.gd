@@ -1,12 +1,15 @@
 extends CanvasLayer
 
 @onready var theme_select = $VBoxContainer/ThemeSelect
+@onready var control_select = $VBoxContainer/ControlSelect
 
 func _ready() -> void:
 	theme_select.selected = ThemeManager.selected_theme
 	var themes = ThemeManager.get_themes()
 	for i in len(themes):
 		theme_select.add_item(themes[i]["text"], i)
+		
+	control_select.selected = Config.get_control_mode()
 
 func toggle() -> void:
 	visible = !visible
@@ -35,3 +38,7 @@ func _on_quit_button_pressed():
 
 func _on_exit_button_pressed():
 	toggle()
+
+func _on_control_select_item_selected(index):
+	Config.set_control_mode(index)
+	Config.save()

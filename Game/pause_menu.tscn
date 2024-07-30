@@ -29,6 +29,16 @@ alignment = 1
 layout_mode = 2
 text = "Restart"
 
+[node name="ControlSelect" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 1
+item_count = 2
+selected = 0
+popup/item_0/text = "Use Mouse"
+popup/item_0/id = 0
+popup/item_1/text = "Use Paddle"
+popup/item_1/id = 1
+
 [node name="FullScreenButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Toggle Fullscreen"
@@ -43,6 +53,7 @@ text = "Quit Game"
 
 [connection signal="item_selected" from="VBoxContainer/ThemeSelect" to="." method="_on_theme_select_item_selected"]
 [connection signal="pressed" from="VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="item_selected" from="VBoxContainer/ControlSelect" to="." method="_on_control_select_item_selected"]
 [connection signal="pressed" from="VBoxContainer/FullScreenButton" to="." method="_on_full_screen_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
