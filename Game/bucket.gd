@@ -1,7 +1,5 @@
 extends CharacterBody2D
 
-const IS_BUCKET := true
-
 @onready var top_bucket := $TopBucket
 @onready var middle_bucket := $MiddleBucket
 @onready var bottom_bucket := $BottomBucket
